@@ -43,7 +43,11 @@ user = socket.gethostname()
 eyes = '-     -'
 file = 'wabbit'
 dir = '~/' + file
-logo = '''\033[1;37m
+
+class Constant:
+  Prompt = f'''\033[31m┌─[{user}\033[1;33m@\033[0;36m\033[31m]─[{dir}]\n└──╼ #'''
+  user = socket.gethostname()
+  logo = '''\033[1;37m
    ***       
   ** **
  **   **
@@ -63,11 +67,7 @@ logo = '''\033[1;37m
      **     **   
        *****
        
-'''
-
-class Constant:
-  INPUT = f'''\033[31m┌─[{user}\033[1;33m@\033[0;36m\033[31m]─[{dir}]\n└──╼ #'''
-  user = socket.gethostname()
+  '''
   
 c = Constant()
 
@@ -76,19 +76,24 @@ c = Constant()
 #######################
 
 def main():
-  print(logo)
-  print(f'Welcome {user}')
+  print(c.logo)
+  print(f'Welcome {c.user}\n')
   while True:
-    cmdInput = input(c.INPUT)
+    cmdInput = input(c.Prompt)
     command = cmdInput.split(' ')
     mainCommand = command[0].lower()
     if mainCommand == 'hashid':
-      if command[1]:
-        file = 'wabbit/hashid'
-        hash = command[1]
-        hashid.hashid(hash)
-      else:
+      try:
+        if command[1]:
+          hash = command[1]
+          hashid.hashid(hash)
+      except IndexError:
         print('Usage: hashid [hash]')
+
+
+#######################
+# RUN
+#######################
 
 if __name__ == '__main__':      
   main()
