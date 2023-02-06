@@ -90,5 +90,6 @@ def main():
       else:
         print('Usage: hashid [hash]')
 
-main()
+if __name__ == '__main__':      
+  main()
   
