@@ -9,12 +9,11 @@
 #######################
 
 #Clean'hashid.py'
-#FixFileOrders
 #RandomHashBrute
 #OrderedHashBrute
 #WordlistHashBrute
 #OnlineBrute
-#DirBrute
+#dir brute
 
 #######################
 # IMPORTS
@@ -29,7 +28,13 @@ import random
 import socket
 from builtins import input
 from sys import argv, exit
-import hashid
+
+#######################
+# MODULE IMPORT
+#######################
+
+from modules import hashid
+
 #######################
 # VARIABLES
 #######################
