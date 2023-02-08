@@ -54,4 +54,34 @@ class String:
 
   '''def shake_256(self):
     result = hashlib.shake_256(self.string.encode())
-    return result.hexdigest()'''
+  return result.hexdigest()'''
+
+  def hash(self, hashType):
+    if hashType == 'sha1':
+      return self.sha1()
+    elif hashType == 'sha224':
+      return self.sha224()
+    elif hashType == 'sha256':
+      return self.sha256()
+    elif hashType == 'sha384':
+      return self.sha384()
+    elif hashType == 'sha512':
+      return self.sha512()
+    elif hashType == 'blake2b':
+      return self.blake2b()
+    elif hashType == 'blake2s':
+      return self.blake2s()
+    elif hashType == 'md5':
+      return self.md5()
+    elif hashType == 'sha3_224':
+      return self.sha3_224()
+    elif hashType == 'sha3_384':
+      return self.sha3_384()
+    elif hashType == 'sha3_512':
+      return self.sha3_512()
+    elif hashType == 'shake_128':
+      return self.shake_128()
+    #elif hashType == 'shake_256':
+      #return self.shake_256()
+    else:
+      return 'Invalid hash type'
