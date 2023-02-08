@@ -9,11 +9,7 @@
 #######################
 
 #Clean'hashid.py'
-#RandomHashBrute
-#OrderedHashBrute
-#WordlistHashBrute
-#OnlineBrute
-#dir brute
+#OnlineBrute 
 
 #######################
 # IMPORTS
@@ -24,7 +20,6 @@ import webbrowser
 from platform import system
 from time import sleep
 import hashlib
-from modules import AntHashLib
 import random
 import socket
 from builtins import input
@@ -34,8 +29,8 @@ from sys import argv, exit
 # MODULE IMPORT
 #######################
 
-from modules import hashid
-from modules import randomBrute
+from modules import HashID
+from modules import HashBrute
 from modules import AntHashLib
 #######################
 # VARIABLES
@@ -88,7 +83,7 @@ def main():
       try:
         if command[1]:
           hash = command[1]
-          hashid.hashid(hash)
+          HashID.HashID(hash)
       except IndexError:
         print('Usage: hashid [hash]')
     elif mainCommand == 'hash':
@@ -109,9 +104,18 @@ def main():
         hashType = hashType.lower()
         len = command[3]
         len = int(len)
-        randomBrute.Brute(hash, hashType, False, len)
+        HashBrute.Random(hash, hashType, False, len)
       except IndexError:
         print('Usage: randombrute [hash] [hashType] [length] [Fixed]')
+    elif mainCommand == 'wordlistbrute' or mainCommand == 'wlbrute' or mainCommand == 'wbrute':
+      try:
+        hash = command[1]
+        hashType = command[2]
+        hashType = hashType.lower()
+        wordlistDir = command[3]
+        HashBrute.Wordlist(hash, hashType, wordlistDir)
+      except IndexError:
+        print('Usage: wordlistBrute [hash] [hashType] [wordlistName.txt]')
     elif mainCommand == 'help':
       print('''
       hashid [hash]            | identifies possible hashes
@@ -128,6 +132,10 @@ def main():
 # RUN
 #######################
 
-if __name__ == '__main__':      
-  main()
+if __name__ == '__main__': 
+  try:
+    main()
+  except KeyboardInterrupt:
+    print('The wabbit sleeps...')
+    exit()
   
