@@ -35,7 +35,8 @@ from sys import argv, exit
 #######################
 
 from modules import hashid
-
+from modules import randomBrute
+from modules import AntHashLib
 #######################
 # VARIABLES
 #######################
@@ -96,21 +97,21 @@ def main():
         hashType = command[2]
         hashType = hashType.lower()
         string = AntHashLib.String(string)
-        exec(f'print(string.{hashType}())')
-      except AttributeError:
-        print('Hash not found.')
-      except SyntaxError:
-        print('Error, put the hashtype in plain text')
+        print(string.hash(hashType))
       except IndexError:
         print('Usage: hash [string] [hashType]')
-
-
-#######################
-# RUN
-#######################
-
     if mainCommand == 'wizard':
       print('not finished yet')
+    if mainCommand == 'randombrute' or mainCommand == 'rbrute':
+      try:
+        hash = command[1]
+        hashType = command[2]
+        hashType = hashType.lower()
+        len = command[3]
+        len = int(len)
+        randomBrute.Brute(hash, hashType, False, len)
+      except IndexError:
+        print('Usage: randombrute [hash] [hashType] [length] [Fixed]')
     if mainCommand == 'help':
       print('''
       hashid [hash]            | identifies possible hashes
@@ -119,7 +120,14 @@ def main():
       wizard                   | Opens a more simple version of Wabbit
       ''')
     else:
-      print('Command not found. Try running help.)
+      print('Command not found. Try running help.')
+
+
+
+#######################
+# RUN
+#######################
+
 if __name__ == '__main__':      
   main()
   
