@@ -2,7 +2,7 @@ import hashlib
 
 class String:
   def __init__(self, string):
-    self.string = ''
+    self.string = string
 
   def sha1(self):
     result = hashlib.sha1(self.string.encode())
@@ -85,3 +85,6 @@ class String:
       #return self.shake_256()
     else:
       return 'Invalid hash type'
+
+  def print(self):
+    print(self.string)
