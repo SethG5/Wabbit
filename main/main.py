@@ -91,7 +91,7 @@ def main():
           hashid.hashid(hash)
       except IndexError:
         print('Usage: hashid [hash]')
-    if mainCommand == 'hash':
+    elif mainCommand == 'hash':
       try:
         string = command[1]
         hashType = command[2]
@@ -100,9 +100,9 @@ def main():
         print(string.hash(hashType))
       except IndexError:
         print('Usage: hash [string] [hashType]')
-    if mainCommand == 'wizard':
+    elif mainCommand == 'wizard':
       print('not finished yet')
-    if mainCommand == 'randombrute' or mainCommand == 'rbrute':
+    elif mainCommand == 'randombrute' or mainCommand == 'rbrute':
       try:
         hash = command[1]
         hashType = command[2]
@@ -112,7 +112,7 @@ def main():
         randomBrute.Brute(hash, hashType, False, len)
       except IndexError:
         print('Usage: randombrute [hash] [hashType] [length] [Fixed]')
-    if mainCommand == 'help':
+    elif mainCommand == 'help':
       print('''
       hashid [hash]            | identifies possible hashes
       hash [string] [hashType] | hashes a string
