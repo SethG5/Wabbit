@@ -9,8 +9,8 @@ def dir(website, wordlist):
     dirs = str(f.read()).split()
   for dir in dirs:
     try:
-      requests.get(f'https://{website}/{dir}')
-      if requests.response.status_code == 200:
+      web = requests.get(f'https://{website}/{dir}')
+      if web.status_code == 200:
         foundDirs.append(dir)
         print(f'Found: https://{website}/{dir}')
       else:
@@ -20,5 +20,5 @@ def dir(website, wordlist):
       break
   print()
   print('Found Directories:')
-  for dir in range(foundDirs):
+  for dir in foundDirs:
     print(f'{website}/{dir}')
