@@ -13,7 +13,7 @@ def Random(hash, hashType, Fixed, len):
       if Fixed == False:
         strLen = random.randint(1, len)
       for i in range(0, strLen):
-        text += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()")
+        text += random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()[]\;,./{}|:>?-_=+`~")
       text = AntHashLib.String(text)
       if hash == text.hash(hashType):
         print("Found: " + text.string)
@@ -30,7 +30,7 @@ def Wordlist(hash, hashType, wordlistDir):
     passwords = str(f.read()).split()
     for password in passwords:
       try:
-        password = AntHashLib.string(password)
+        password = AntHashLib.String(password)
         if password.hash(hashType) == hash:
           print(f'Found: {password.string}')
           break
