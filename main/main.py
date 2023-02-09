@@ -32,6 +32,7 @@ from sys import argv, exit
 from modules import HashID
 from modules import HashBrute
 from modules import AntHashLib
+from modules import WebBrute
 #######################
 # VARIABLES
 #######################
@@ -83,7 +84,7 @@ def main():
       try:
         if command[1]:
           hash = command[1]
-          HashID.HashID(hash)
+          HashID.hashid(hash)
       except IndexError:
         print('Usage: hashid [hash]')
     elif mainCommand == 'hash':
@@ -116,12 +117,22 @@ def main():
         HashBrute.Wordlist(hash, hashType, wordlistDir)
       except IndexError:
         print('Usage: wordlistBrute [hash] [hashType] [wordlistName.txt]')
+    elif mainCommand == 'dirbute' or mainCommand == 'dbrute':
+      try:
+        website = command[1]
+        wordlist = command [2]
+        WebBrute(website, wordlist)
+      except IndexError:
+        print('Usage: dirbrute [website] [wordlistName.txt]')
     elif mainCommand == 'help':
       print('''
-      hashid [hash]            | identifies possible hashes
-      hash [string] [hashType] | hashes a string
-      help                     | take a guess
-      wizard                   | Opens a more simple version of Wabbit
+      hashid [hash]                                      | identifies possible hashes of a given hash
+      hash [string] [hashType]                           | hashes a given string with the given hash type
+      randombrute [hash] [hashType] [length] [Fixed]     | brutes a given hash by randomly generating a password
+      wordlistbrute [hash] [hashType] [wordlistName.txt] | brutes a given hash by uing each password in a wordlist
+      dirbrute [website] [wordlistName.txt]              | checks a given website for every directory in the wordlist
+      wizard                                             | Opens a more simple version of Wabbit
+      help                                               | take a guess
       ''')
     else:
       print('Command not found. Try running help.')
