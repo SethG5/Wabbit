@@ -117,11 +117,11 @@ def main():
         HashBrute.Wordlist(hash, hashType, wordlistDir)
       except IndexError:
         print('Usage: wordlistBrute [hash] [hashType] [wordlistName.txt]')
-    elif mainCommand == 'dirbute' or mainCommand == 'dbrute':
+    elif mainCommand == 'dirbrute' or mainCommand == 'dbrute':
       try:
         website = command[1]
         wordlist = command [2]
-        WebBrute(website, wordlist)
+        WebBrute.dir(website, wordlist)
       except IndexError:
         print('Usage: dirbrute [website] [wordlistName.txt]')
     elif mainCommand == 'help':
