@@ -1,6 +1,7 @@
 # Wabbit
 ## A CLI password cracking tool written in Python.
-### created by Seth. 
+### Currently Depricated. Wait for the wabbit 2 (name is tbd)
+#### created by Seth. 
 ---
 ## Features
 - [x] Random Hash Bruting
